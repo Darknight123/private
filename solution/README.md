@@ -1,4 +1,4 @@
-
+part 1 solution:
 1. install docker and docker-compose,start docker service,make it enabled post restart as well:
 #yum install docker
 #curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
@@ -67,6 +67,21 @@ fi
 - Set the environment variable CSVSERVER_BORDER to have value Orange
 #docker run -d -i -v /root/csvserver/solution/inputFile:/csvserver/inputdata -p 9393:9300 -e CSVSERVER_BORDER='Orange' infracloudio/csvserver:latest
 #docker ps
-
-
+=====================
+part 2 solution
+1. use docker-compose.yml file attached in solution directory of this branch to perform the same task done by part 1
+2. run below command to up the container
+#docker-compose up -d
+3. observe if container is up or not and try to access web page at mentioned port:
+#docker ps
+http://localhost:9393
+=======================
+part 3 solution
+1. to monitor deployed application using prometheus you need to add target in existing prometheus yaml by copying config yml from docker congtainer to host machine.
+#docker ps 
+here note down the container id
+#docker cp <container_id>:/etc/prometheus/prometheus.yml /root/csvserver/solution/prometheus.yml
+2. add target and mount the same config file at same location as required in image to run successfully. refer sample prometheus.yml mentioned in this repo.
+3. up the service/container using below command and check if you can see targets under monitoring by hitting localhost:9090 url:
+#docker-compose up -d
 
