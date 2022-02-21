@@ -1,3 +1,4 @@
+
 1. install docker and docker-compose,start docker service,make it enabled post restart as well:
 #yum install docker
 #curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
